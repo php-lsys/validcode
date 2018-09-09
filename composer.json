@@ -1,0 +1,21 @@
+{
+	"name" : "lsys/validcode",
+	"type" : "library",
+	"license": "Apache-2.0",
+	"version" : "1.0.0",
+	"description" : "lsys module validcode",
+	"autoload" : {
+		"psr-4" : {
+			"LSYS\\" : "src/classes/LSYS/"
+		}
+	},
+	"require" : {
+		"php" : ">=5.5",
+		"lsys/config" : "~1.0.0"
+	},
+	"suggest": {
+		"lsys/validcode-storage-memcache":"~1.0.0",
+     	"lsys/validcode-storage-memcached":"~1.0.0",
+     	"lsys/validcode-storage-redis":"~1.0.0"
+    }
+}
