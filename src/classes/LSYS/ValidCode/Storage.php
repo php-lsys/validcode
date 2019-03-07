@@ -21,7 +21,7 @@ interface Storage{
 	 * @param number $key
 	 * @return bool
 	 */
-	public function is_duration($key);
+	public function isDuration($key);
 	/**
 	 * 获取验证码
 	 * @param string $key

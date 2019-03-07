@@ -1,7 +1,7 @@
 <?php
 namespace LSYS\ValidCode;
 /**
- * @method \LSYS\ValidCode valid_code($config=null)
+ * @method \LSYS\ValidCode validCode($config=null)
  */
 class DI extends \LSYS\DI{
     /**
@@ -14,7 +14,7 @@ class DI extends \LSYS\DI{
      */
     public static function get(){
         $di=parent::get();
-        !isset($di->valid_code)&&$di->valid_code(new \LSYS\DI\ShareCallback(function($config=null){
+        !isset($di->validCode)&&$di->validCode(new \LSYS\DI\ShareCallback(function($config=null){
             return $config?$config:self::$config;
         },function($config=null){
             $config=\LSYS\Config\DI::get()->config($config?$config:self::$config);

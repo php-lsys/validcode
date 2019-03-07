@@ -34,9 +34,9 @@ class File implements Storage{
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see \LSYS\ValidCode\Storage::is_duration()
+	 * @see \LSYS\ValidCode\Storage::isDuration()
 	 */
-	public function is_duration($key){
+	public function isDuration($key){
 		$file=$this->_file($key);
 		if (!is_file($file)) return false;
 		$str=file_get_contents($file);
