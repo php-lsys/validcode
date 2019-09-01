@@ -1,7 +1,6 @@
 <?php
-use LSYS\ValidCode;
-
 require_once  __DIR__."/Bootstarp.php";
+\LSYS\ValidCode\DI::$config="validcode.memcache";
 $key="login:13510461170";
 $code=\LSYS\ValidCode\DI::get()->validCode()->getCode($key);
 

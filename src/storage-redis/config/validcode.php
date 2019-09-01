@@ -13,7 +13,22 @@ return array(
 		),
 		'phrase'=>\LSYS\ValidCode\Phrase\Number::class,
 		'phrase_config'=>array(//验证码生成配置
-			'lenght'=>4
+			'lenght'=>6
 		)
 	),
+	"redis"=>array(
+		'storage'=>\LSYS\ValidCode\Storage\Redis::class,
+// 		'storage_config'=>array(
+			//默认用系统redis配置
+// 		),
+	// 不配置CODE 默认用 \LSYS\ValidCode\Phrase\Number
+	),
+	"memcache"=>array(
+		'storage'=>\LSYS\ValidCode\Storage\Memcache::class,
+// 		'storage_config'=>array(
+			//默认用系统redis配置
+// 		),
+	// 不配置CODE 默认用 \LSYS\ValidCode\Phrase\Number
+	),
+		
 );
