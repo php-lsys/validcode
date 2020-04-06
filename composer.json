@@ -14,11 +14,11 @@
 		}
 	},
 	"require" : {
-		"lsys/config" : "~2.1.0"
+		"lsys/config" : "~2.0.0"
 	},
 	"suggest": {
-		"lsys/memcache":"~2.1.0",
-     	"lsys/memcached":"~2.1.0",
-     	"lsys/redis":"~2.1.0"
+		"lsys/memcache":"~2.0.0",
+     	"lsys/memcached":"~2.0.0",
+     	"lsys/redis":"~2.0.0"
     }
 }
