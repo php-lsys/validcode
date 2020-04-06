@@ -3,13 +3,6 @@
 > 有利于验证码生成代码复用
 
 
-数据存放已实现以下包,按需要引入:
-
-	"lsys/validcode-storage-memcache":"~2.0.0",
-	"lsys/validcode-storage-memcached":"~2.0.0",
-	"lsys/validcode-storage-redis":"~2.0.0"
-
-
 ```
 <?php
 use LSYS\ValidCode;
