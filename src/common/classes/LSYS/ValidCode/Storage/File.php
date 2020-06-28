@@ -25,46 +25,46 @@ class File implements Storage{
 	 * {@inheritDoc}
 	 * @see \LSYS\ValidCode\Storage::set()
 	 */
-	public function set($key,$code,$save_time,$duration_time=0){
+	public function set(string $key,string $code,int $save_time,int $duration_time=0):bool{
 		$save_time=time()+$save_time;
 		$duration_time=time()+$duration_time;
 		$file=$this->_file($key);
 		$save=implode(":",array($code,$save_time,$duration_time));
-		return file_put_contents($file, $save);
+		return file_put_contents($file, $save)!==false;
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\ValidCode\Storage::isDuration()
 	 */
-	public function isDuration($key){
+	public function isDuration(string $key):bool{
 		$file=$this->_file($key);
 		if (!is_file($file)) return false;
 		$str=file_get_contents($file);
 		$arr=explode(":", $str);
 		if (count($arr)!=3) return false;
-		list($code,$save_time,$duration_time)=$arr;
+		$duration_time=$arr[2]??0;
 		return $duration_time>time();
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\ValidCode\Storage::get()
 	 */
-	public function get($key){
+	public function get(string $key){
 		$file=$this->_file($key);
 		if (!is_file($file)) return NULL;
 		$str=file_get_contents($file);
 		$arr=explode(":", $str);
 		if (count($arr)!=3) return false;
-		list($code,$save_time,$duration_time)=$arr;
+		list($code,$save_time)=$arr;
 		return $save_time>time()?$code:null;
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\ValidCode\Storage::get()
 	 */
-	public function del($key){
+	public function del(string $key):bool{
 		$file=$this->_file($key);
 		if (!is_file($file)) return NULL;
-		return @unlink($file);
+		return !!@unlink($file);
 	}
 }

@@ -49,7 +49,7 @@ class ValidCode{
 	 * @param string $key
 	 * @return Code
 	 */
-	public function getCode($key){
+	public function getCode(string $key){
 		$key=strval($key);
 		if (!isset($this->_code[$key])){
 			$this->_code[$key]=new Code($key, $this->_storage, $this->_phrase);

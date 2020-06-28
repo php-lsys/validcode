@@ -17,7 +17,7 @@ class Redis implements Storage{
 	 * {@inheritDoc}
 	 * @see \LSYS\ValidCode\Storage::set()
 	 */
-	public function set($key,$code,$save_time,$duration_time=0){
+	public function set(string $key,string $code,int $save_time,int $duration_time=0):bool{
 	    $this->_redis->configConnect();
 		$key=$this->_prefix.$key;
 		$status=$this->_redis->hMset($key,array(
@@ -25,13 +25,13 @@ class Redis implements Storage{
 			'duration'=>time()+$duration_time
 		));
 		$this->_redis->expire($key,$save_time);
-		return $status;
+		return boolval($status);
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\ValidCode\Storage::isDuration()
 	 */
-	public function isDuration($key){
+	public function isDuration(string $key):bool{
 	    $this->_redis->configConnect();
 		$key=$this->_prefix.$key;
 		$data=$this->_redis->hGetAll($key);
@@ -42,7 +42,7 @@ class Redis implements Storage{
 	 * {@inheritDoc}
 	 * @see \LSYS\ValidCode\Storage::get()
 	 */
-	public function get($key){
+	public function get(string $key){
 	    $this->_redis->configConnect();
 		$key=$this->_prefix.$key;
 		$data=$this->_redis->hGetAll($key);
@@ -53,9 +53,9 @@ class Redis implements Storage{
 	 * {@inheritDoc}
 	 * @see \LSYS\ValidCode\Storage::del()
 	 */
-	public function del($key){
+	public function del(string $key):bool{
 	    $this->_redis->configConnect();
 		$key=$this->_prefix.$key;
-		return $this->_redis->del($key);
+		return (bool)$this->_redis->del($key);
 	}
 }
